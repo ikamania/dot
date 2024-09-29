@@ -4,6 +4,7 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+config.font = wezterm.font("Fira Code")
 config.font_size = 14.0
 config.color_scheme = 'Ashes (base16)'
 
