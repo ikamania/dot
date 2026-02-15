@@ -1,0 +1,1 @@
+/home/hayka/.zshrc
