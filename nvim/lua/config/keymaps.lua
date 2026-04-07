@@ -4,3 +4,6 @@
 vim.keymap.set("n", "-", function()
   require("oil").open()
 end, {})
+
+-- code-runner
+vim.keymap.set("n", "<F4>", ":RunCode<CR>")
