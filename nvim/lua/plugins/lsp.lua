@@ -1,17 +1,21 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
   },
   config = function()
-    local lsp_servers = { "pyright", "clangd" }
-
     require("mason").setup()
+
     require("mason-lspconfig").setup({
-      ensure_installed = lsp_servers,
+      ensure_installed = {
+        "pyright",
+        "clangd",
+      },
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+
     local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if ok then
       capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
@@ -26,23 +30,28 @@ return {
       map("n", "gi", vim.lsp.buf.implementation, opts)
       map("n", "gr", vim.lsp.buf.references, opts)
       map("n", "K", vim.lsp.buf.hover, opts)
+      map("n", "<leader>rn", vim.lsp.buf.rename, opts)
+      map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
     end
 
     vim.lsp.config("pyright", {
-      on_attach = on_attach,
       capabilities = capabilities,
+      on_attach = on_attach,
       settings = {
         python = {
           analysis = {
-            typeCheckingMode = "strict",
+            typeCheckingMode = "basic", -- change to "strict" if desired
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = "workspace",
           },
         },
       },
     })
 
     vim.lsp.config("clangd", {
-      on_attach = on_attach,
       capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     vim.lsp.enable("pyright")
