@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "-", function()
   require("oil").open()
-end, {})
+end, { desc = "Open Oil" })
 
 -- code-runner
-vim.keymap.set("n", "<F4>", ":RunCode<CR>")
+vim.keymap.set("n", "<F4>", "<cmd>RunCode<cr>", { desc = "Run Code" })

@@ -6,7 +6,6 @@ return {
     opts = {
       view_options = {
         show_hidden = true,
-        show_parent_dir = true,
       },
     },
     -- Optional dependencies
