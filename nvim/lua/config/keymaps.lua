@@ -7,3 +7,18 @@ end, { desc = "Open Oil" })
 
 -- code-runner
 vim.keymap.set("n", "<F4>", "<cmd>RunCode<cr>", { desc = "Run Code" })
+
+-- theme change
+vim.keymap.set("n", "<leader>ut", function()
+  local gruvbox = require("gruvbox")
+
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+    gruvbox.setup({ transparent_mode = false })
+  else
+    vim.o.background = "dark"
+    gruvbox.setup({ transparent_mode = true })
+  end
+
+  vim.cmd.colorscheme("gruvbox")
+end, { desc = "Toggle Light/Dark Theme" })
