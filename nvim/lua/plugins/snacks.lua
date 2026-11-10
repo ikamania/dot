@@ -4,9 +4,7 @@ return {
     opts = {
       terminal = {
         win = {
-          position = "float",
-          border = "rounded",
-          width = 0.8,
+          position = "bottom",
           height = 0.6,
         },
       },
