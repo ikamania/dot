@@ -7,9 +7,14 @@ return {
   },
 
   {
+    "dchinmay2/alabaster.nvim",
+    lazy = false,
+  },
+
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "alabaster",
     },
   },
 }
